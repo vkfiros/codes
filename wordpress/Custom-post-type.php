@@ -56,6 +56,7 @@ $args = array(
 'query_var' => true,
 'rewrite' => array('slug' => 'news'),
 'has_archive' => true,
+'menu_icon'  => 'dashicons-book',
 'hierarchical' => false,
 );
 register_post_type('news', $args);
