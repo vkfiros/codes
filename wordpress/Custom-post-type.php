@@ -23,7 +23,7 @@ add_action( 'init', 'create_posttype' );
 <!-- Custom post type features -->
 
 /*Custom Post type features start*/
-function cw_post_type_news() {
+function post_type_news() {
 $supports = array(
 'title', // post title
 'editor', // post content
@@ -60,7 +60,7 @@ $args = array(
 );
 register_post_type('news', $args);
 }
-add_action('init', 'cw_post_type_news');
+add_action('init', 'post_type_news');
 /*Custom Post type features end*/
 
 
