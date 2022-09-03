@@ -1,0 +1,57 @@
+<!DOCTYPE html><html lang="en" class="export"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+
+  <title>Flickity · Touch, responsive, flickable carousels</title>
+  <link rel="stylesheet" href="flickity.min.css">
+
+  <!-- My style -->
+  <style>
+    .carousel-cell{
+      width: 100%;
+      padding: 30px;
+    }
+    .carousel-cell .item{
+      min-height: 300px;
+      background-color: #d3d3d3;
+      width: 100%;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+  <!-- End My style -->
+</head>
+<body>
+
+
+<div class="duo">
+  <p>Home | Flickity slider | v2.2</p>
+  <p>More options <a href="https://flickity.metafizzy.co/">flickity</a></p>
+    <div class="main-carousel carousel--show-several carousel--selected-cell">
+      <div class="carousel-cell"><div class="item">1</div></div>
+      <div class="carousel-cell"><div class="item">2</div></div>
+      <div class="carousel-cell"><div class="item">3</div></div>
+      <div class="carousel-cell"><div class="item">4</div></div>
+      <div class="carousel-cell"><div class="item">5</div></div>
+      <div class="carousel-cell"><div class="item">6</div></div>
+      <div class="carousel-cell"><div class="item">7</div></div>
+      <div class="carousel-cell"><div class="item">8</div></div>
+      <div class="carousel-cell"><div class="item">9</div></div>
+      <div class="carousel-cell"><div class="item">10</div></div>
+    </div>
+  </div>
+</div>
+
+<script src="jquery.min.js"></script>
+  <script src="flickity.pkgd.min.js"></script>
+  <script>
+    $('.main-carousel').flickity({
+  // options
+  cellAlign: 'left',
+  contain: true
+});
+  </script>
+
+</body></html>
