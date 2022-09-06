@@ -1,0 +1,27 @@
+ add_shortcode( 'product-list','bpo_product_list' );
+function bpo_product_list ( $atts ) {
+  $atts = shortcode_atts( array(
+    'backhoes' => ''
+  ), $atts );
+    $terms = get_terms('type');
+    wp_reset_query();
+    $args = array('post_type' => 'machines',
+      'tax_query' => array(
+        array(
+          'taxonomy' => 'type',
+          'field' => 'slug',
+          'terms' => array('backhoes'),
+        ),
+      ),
+     );
+     $loop = new WP_Query($args);
+     if($loop->have_posts()) {
+        while($loop->have_posts()) : $loop->the_post();
+            echo ' "'.get_the_title().'" ';
+        endwhile;
+     }
+
+     else {
+            echo  'Sorry, no posts were found';
+          }
+}
