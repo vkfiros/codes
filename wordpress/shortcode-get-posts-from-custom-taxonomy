@@ -1,27 +1,45 @@
- add_shortcode( 'product-list','bpo_product_list' );
 function bpo_product_list ( $atts ) {
-  $atts = shortcode_atts( array(
-    'backhoes' => ''
+ $atts = shortcode_atts( array(
+    'category' => 'backhoes'
   ), $atts );
     $terms = get_terms('type');
     wp_reset_query();
     $args = array('post_type' => 'machines',
+				  'showposts' => -1,
       'tax_query' => array(
         array(
           'taxonomy' => 'type',
           'field' => 'slug',
-          'terms' => array('backhoes'),
+          'terms' => $atts,
         ),
       ),
      );
      $loop = new WP_Query($args);
      if($loop->have_posts()) {
+		 
+		  $result .= '<div class="products-row">';
+		 
         while($loop->have_posts()) : $loop->the_post();
-            echo ' "'.get_the_title().'" ';
+            
+	
+	        $hours = get_field( 'hours' ); 
+            $price = get_field( 'price' );
+	
+        $result .= '<div class="product-col"><a href="'.get_permalink().'"><div class="product-item">';
+        $result .= '<div class="img-hold">' . get_the_post_thumbnail() . '</div>';
+        $result .= '<div class="cont-hold"><h5 class="movie-name">' . get_the_title() . '</h5>';
+	    $result .= '<h3 class="price">AED ' .$price. '</h3>';
+	    $result .= '<p class="hours">' .$hours.  ' hours</p>';
+        $result .= '</div></div></a></div>';
+		 
+		 
         endwhile;
+		 $result .= '</div>';
+ 
      }
+	
+	    return $result; 	  
 
-     else {
-            echo  'Sorry, no posts were found';
-          }
+    
 }
+ add_shortcode( 'product-list','bpo_product_list' );
